@@ -1,0 +1,10 @@
+.card_style {
+  transition: all linear 0.2s;
+  max-width: 340px;
+  height: auto;
+  border: 1px solid #916dd5;
+  border-radius: 10px;
+}
+.card_style:hover {
+  box-shadow: 3px 3px 10px #f0e3ff;
+}

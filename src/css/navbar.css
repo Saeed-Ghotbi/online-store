@@ -1,0 +1,23 @@
+.MuiTextField-root {
+  background-color: #e5e5e5;
+  border-radius: 10px !important;
+}
+
+.MuiOutlinedInput-root {
+  border-radius: 10px !important;
+}
+
+.StyleLineNavbar {
+  height: 70px !important;
+  line-height: 70px;
+  fill: #3e206d !important;
+  float: left;
+  margin-left: 30px;
+}
+
+.title_navbar {
+  float: right;
+  height: 70px;
+  margin-right: 30px !important;
+  line-height: 70px !important;
+}

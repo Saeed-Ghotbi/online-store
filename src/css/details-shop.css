@@ -1,0 +1,35 @@
+.btn_share_favorite {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #3e206d;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 50px;
+  color: #3e206d;
+}
+.btn_share_favorite:hover {
+  transition: all linear 0.2s;
+  background-color: #916dd5;
+  color: white;
+  border: 1px solid #916dd5;
+  box-shadow: 3px 3px 10px #f0e3ff;
+}
+.image_Perview {
+  width: 75px;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  margin: auto;
+}
+.arrow_Perview {
+  display: block !important;
+  margin: auto;
+}
+.rectangle_information_product {
+  width: 95%;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  border-radius: 10px;
+}

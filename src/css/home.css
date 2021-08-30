@@ -1,0 +1,38 @@
+.transparent_style {
+  /* position: absolute;
+    top: 216px;
+    right: 80px; */
+  width: 400px;
+  height: auto;
+}
+
+.img_style {
+  /* position: absolute;
+  top: 87px; */
+  width: 550px;
+  height: auto;
+}
+/* .MuiButton-root {
+  font-family: irfont !important;
+} */
+.dv_filter {
+  margin: auto !important;
+}
+
+.btn_filter {
+  margin: 10px !important;
+  background-color: #3e206d !important;
+  border-radius: 20px !important;
+  color: white !important;
+}
+
+.underline_home {
+  background-color: #3e206d;
+  height: 1px;
+}
+
+.brand_style {
+  margin: 30px;
+  max-width: 100%;
+  width: 75px;
+}

@@ -1,0 +1,15 @@
+.style_dv_footer {
+  width: 100%;
+  height: 300px;
+  background-color: #e5e5e5;
+  margin-top: 50px;
+}
+.ul_footer {
+  list-style-type: none;
+  padding: 0px;
+}
+.li_footer {
+  float: right;
+  clear: right;
+  margin: 5px;
+}
