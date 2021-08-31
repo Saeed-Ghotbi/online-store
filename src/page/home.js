@@ -35,7 +35,7 @@ export default function Home(props) {
       <Navbar navbarLine={false} />
       <div style={{ width: "100%", height: 500, backgroundColor: "#F0E3FF", marginBottom: 20 }}>
         <Container>
-          <Grid container justify="center" alignItems="center" style={{ height: 500 }}>
+          <Grid container justifyContent="center" alignItems="center" style={{ height: 500 }}>
             <Grid item sm={12} lg={6} align="center">
               <Typography variant="h4" style={{ padding: 30 }}>
                 فروش محصولات برند آرت من
@@ -66,7 +66,7 @@ export default function Home(props) {
         </Container>
       </div>
       <Container>
-        <Grid justify="center" alignItems="center" container spacing={5}>
+        <Grid justifyContent="center" alignItems="center" container spacing={5}>
           <Grid item xs={12} lg={6} align="center">
             <Typography variant="h6">
               <Link to="/shop" className="link_router">

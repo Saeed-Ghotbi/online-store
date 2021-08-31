@@ -1,16 +1,16 @@
 import React from "react";
-import "./css/App.css";
+import "./css/App.scss";
 import Home from "./page/home";
 import Shop from "./page/shop";
 import DetailsShop from "./page/details-shop";
 import { create } from "jss";
 import rtl from "jss-rtl";
 import { StylesProvider, jssPreset } from "@material-ui/core/styles";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 
-const theme = createMuiTheme({
+const theme = createTheme({
   direction: "rtl",
   typography: {
     fontFamily: ["irfont", "Roboto"],
