@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Grid, Container, Link, Typography, Select, FormControl, InputLabel, MenuItem } from "@material-ui/core";
 import { FavoriteBorder, Share, KeyboardArrowDown, KeyboardArrowUp, ShoppingCartOutlined } from "@material-ui/icons";
 import NavBar from "../component/NavBar";
-import "../css/details-shop.css";
+import "../sass/details-shop.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.scss";
 import Card from "../component/Card";

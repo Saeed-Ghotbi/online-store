@@ -1,7 +1,7 @@
 // import { red } from "@material-ui/core/colors";
 import React from "react";
 import { Typography } from "@material-ui/core";
-import "../css/Card.css";
+import "../sass/Card.scss";
 import image from "../img/men-home1.jpg";
 import { Link } from "react-router-dom";
 

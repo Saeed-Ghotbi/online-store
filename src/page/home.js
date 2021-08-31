@@ -16,7 +16,7 @@ import property1 from "../img/esalat1.png";
 import property2 from "../img/marjoo1.png";
 import property3 from "../img/tanavo1.png";
 
-import "../css/home.css";
+import "../sass/home.scss";
 import Footer from "../component/Footer";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";

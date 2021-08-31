@@ -1,5 +1,5 @@
 import React from "react";
-import "./css/App.scss";
+import "./sass/App.scss";
 import Home from "./page/home";
 import Shop from "./page/shop";
 import DetailsShop from "./page/details-shop";

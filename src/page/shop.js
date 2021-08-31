@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import Navbar from "../component/NavBar";
-import "../css/shop.css";
+import "../sass/shop.scss";
 import { TreeView, TreeItem } from "@material-ui/lab/";
 import { ChevronLeft, ExpandMore } from "@material-ui/icons";
 import { withStyles } from "@material-ui/core/styles";

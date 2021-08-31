@@ -4,7 +4,7 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import { TextField, Typography, Container, Grid, List, ListItem, Collapse } from "@material-ui/core";
 import { ShoppingCartOutlined, PersonOutlineOutlined, ExpandMoreSharp } from "@material-ui/icons";
 import ImgNavbar from "../img/LC-Waikiki.jpg";
-import "../css/navbar.css";
+import "../sass/navbar.scss";
 import { Link } from "react-router-dom";
 
 export default function NavBar(props) {
@@ -37,7 +37,7 @@ export default function NavBar(props) {
 
   function closeDetails(event) {
     const refLine = NavLineRef.current;
-    //this is the original element the event handler was assigned to
+    //this     is the original element the event handler was assigned to
     var e = event.toElement || event.relatedTarget;
     if (e.parentNode === null) return;
     if (e.parentNode === this || e === this) {

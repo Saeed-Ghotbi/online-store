@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Button, Link, Grid, Typography } from "@material-ui/core";
-import "../css/footer.css";
+import "../sass/footer.scss";
 import { Instagram, YouTube, Telegram, Twitter } from "@material-ui/icons";
 
 export default function Footer(props) {
