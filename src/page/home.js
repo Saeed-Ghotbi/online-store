@@ -53,20 +53,20 @@ export default function Home(props) {
               </Link>
             </Grid>
             <Grid item sm={12} lg={6}>
-              <div style={{ width: "100%", position: "absolute" }}>
+              {/* <div style={{ width: "100%", position: "absolute" }}>
                 <img
                   src={transparent}
                   alt="GT"
                   style={{ width: "400px", maxWidth: "100%", height: "auto", position: "absolute", top: -35, right: 100 }}
                 />
                 <img src={women} alt="GT" style={{ width: "550px", maxWidth: "100%", height: "auto", position: "absolute", top: -163, right: 17 }} />
-              </div>
+              </div> */}
             </Grid>
           </Grid>
         </Container>
       </div>
       <Container>
-        <Grid justifyContent="center" alignItems="center" container spacing={5}>
+        <Grid justifyContent="center" xs={12} alignItems="center" container spacing={5}>
           <Grid item xs={12} lg={6} align="center">
             <Typography variant="h6">
               <Link to="/shop" className="link_router">
@@ -89,7 +89,7 @@ export default function Home(props) {
               <img src={setWomen} alt="setwemen" style={{ marginTop: 30, maxWidth: "100%" }} />
             </Link>
           </Grid>
-          <Grid item lg={12} align="center">
+          {/* <Grid item lg={12} align="center">
             <div style={{ marginBottom: 20 }}>
               <Button variant="contained" size="large" className="btn_filter">
                 بیشترین تخفیف ها
@@ -102,16 +102,16 @@ export default function Home(props) {
               </Button>
             </div>
             <div style={{ width: "100%", marginTop: 10 }}>
-              {/* <div style={{ width: 3000, height: 500 }}>
+              <div style={{ width: 3000, height: 500 }}>
                   <Card float="right" marginRight="10px" />
                   <Card float="right" marginRight="10px" />
                   <Card float="right" marginRight="10px" />
                   <Card float="right" marginRight="10px" />
-                </div> */}
+                </div>
               <Swiper
                 spaceBetween={20}
                 slidesPerView={4}
-                onSwiper={(swiper) => console.log(swiper)}
+                onSwiper={(swiper) => }
                 onSlideChange={() => console.log("slide change")}
               >
                 <SwiperSlide>
@@ -134,7 +134,7 @@ export default function Home(props) {
                 </SwiperSlide>
               </Swiper>
             </div>
-          </Grid>
+          </Grid> */}
 
           <Grid item lg={12} align="center">
             <Typography variant="h6">برترین برند ها</Typography>
