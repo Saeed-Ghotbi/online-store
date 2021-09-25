@@ -1,3 +1,8 @@
+$small: "768px";
+$medume: "992px";
+.swiper-container {
+  margin: auto;
+}
 .transparent_style {
   /* position: absolute;
     top: 216px;
@@ -35,4 +40,23 @@
   margin: 30px;
   max-width: 100%;
   width: 75px;
+}
+.banner_medium {
+  width: 90%;
+  height: auto;
+  padding-top: 30px;
+}
+.slider_home {
+  width: 100% !important;
+  height: auto !important;
+}
+@media screen and (max-width: $small) {
+  .banner_medium {
+    width: 90%;
+    height: auto;
+    padding-top: 10px;
+  }
+  .swiper-container {
+    margin-top: 20px;
+  }
 }

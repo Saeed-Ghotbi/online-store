@@ -5,7 +5,6 @@ import { TextField, Typography, Container, Grid, List, ListItem, Collapse } from
 import { ShoppingCartOutlined, PersonOutlineOutlined, ExpandMoreSharp } from "@material-ui/icons";
 import ImgNavbar from "../img/LC-Waikiki.jpg";
 import Hidden from "@material-ui/core/Hidden";
-import withWidth from "@material-ui/core/withWidth";
 
 import "../sass/navbar.scss";
 import { Link } from "react-router-dom";
@@ -16,8 +15,6 @@ function NavBar(props) {
   const [options] = useState(["Option 1", "Option 2"]);
   const MouseEnterRef = useRef(null);
   const NavLineRef = useRef(null);
-  const width = props.width;
-  const gettitle = "online-store";
 
   // useEffect(() => {
   //   const refLine = NavLineRef.current;
@@ -211,4 +208,4 @@ function NavBar(props) {
     </React.Fragment>
   );
 }
-export default withWidth()(NavBar);
+export default NavBar;
