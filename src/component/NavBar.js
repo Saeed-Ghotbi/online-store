@@ -88,7 +88,7 @@ function NavBar(props) {
       <Hidden xsDown>
         <div id="navbar" style={StyleNav}>
           <Container maxWidth="xl">
-            <Typography variant="h5" component="div" className="title_navbar">
+            <Typography variant="h2" component="div" className="title_navbar">
               <Link to="/" className="link_router">
                 LOGO
               </Link>
@@ -183,7 +183,7 @@ function NavBar(props) {
                 <Typography variant="h6" align="center" style={{ marginTop: 50 }}>
                   لباس مردانه
                 </Typography>
-                <Typography component="div" variant="body2" style={{ width: 200, color: "grey" }}>
+                <Typography component="div" variant="body1" style={{ width: 200, color: "grey" }}>
                   <List>
                     {generate(
                       <ListItem>

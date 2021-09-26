@@ -70,27 +70,15 @@ export default function Home(props) {
           <img src={slide5} alt="slide5" className="slider_home" />
         </SwiperSlide>
       </Swiper>
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <Grid container direction="column" justifyContent="center" spacing={matches ? 5 : 0}>
           <Grid container item>
             <Grid item xs={12} lg={6} align="center">
-              <Typography variant="h6">
-                <Link to="/shop" className="link_router">
-                  ست مردانه
-                </Link>
-              </Typography>
-              <div style={{ width: 105 }} className="underline_home"></div>
               <Link to="/shop">
                 <img src={baner1} alt="setmen" className="banner_medium" />
               </Link>
             </Grid>
             <Grid item xs={12} lg={6} align="center">
-              <Typography variant="h6">
-                <Link to="/shop" className="link_router">
-                  ست زنانه
-                </Link>
-              </Typography>
-              <div style={{ width: 95 }} className="underline_home"></div>
               <Link to="/shop">
                 <img src={baner2} alt="setwemen" className="banner_medium" />
               </Link>
@@ -107,7 +95,7 @@ export default function Home(props) {
             <Button variant="contained" size="large" className="btn_filter">
               جدید ترین ها
             </Button>
-            {/* <Swiper slidesPerView={3}>
+            <Swiper slidesPerView={4}>
               <SwiperSlide>
                 <Card />
               </SwiperSlide>
@@ -126,12 +114,11 @@ export default function Home(props) {
               <SwiperSlide>
                 <Card />
               </SwiperSlide>
-            </Swiper> */}
+            </Swiper>
           </Grid>
 
-          <Grid item align="center">
-            <Typography variant="h6">برترین برند ها</Typography>
-            <div style={{ width: 135 }} className="underline_home"></div>
+          <Grid item align="center" style={{ backgroundColor: "#F9F9F9" }}>
+            <Typography variant="h3">برترین برند ها</Typography>
             <div style={{ width: "100%" }}>
               <img src={logo1} alt="logo" className="brand_style" />
               <img src={logo2} alt="logo" className="brand_style" />
@@ -144,22 +131,21 @@ export default function Home(props) {
           </Grid>
           <Grid container item>
             <Grid item lg={12} xs={12} align="center">
-              <Typography variant="h6">ویژگی های ما</Typography>
-              <div style={{ width: 135 }} className="underline_home"></div>
+              <Typography variant="h3">ویژگی های ما</Typography>
             </Grid>
             <Grid item lg={4} xs={12} align="center">
               <img src={property1} alt="logo" className="brand_style" />
               <Typography variant="h5" style={{ marginBottom: 10 }}>
                 ضمانت اصالت کالا
               </Typography>
-              <Typography variant="body2">تمامی کالاها به صورت اورجینال و با ضمانت اصل بودن ارائه می شود</Typography>
+              <Typography variant="body1">تمامی کالاها به صورت اورجینال و با ضمانت اصل بودن ارائه می شود</Typography>
             </Grid>
             <Grid item lg={4} xs={12} align="center">
               <img src={property2} alt="logo" className="brand_style" />
               <Typography variant="h5" style={{ marginBottom: 10 }}>
                 مرجوع کالا
               </Typography>
-              <Typography variant="body2">
+              <Typography variant="body1">
                 خرید از 300 برند بین المللی و ایرانی در هر ساعت شبانه روز و در هر نقطه از کشور برای شما فراهم شده است{" "}
               </Typography>
             </Grid>
@@ -168,7 +154,7 @@ export default function Home(props) {
               <Typography variant="h5" style={{ marginBottom: 10 }}>
                 تنوع محصولات
               </Typography>
-              <Typography variant="body2">با خیال راحت میتوانید در صورت عدم رضایت، کالای خریداری شده را تعویض یا مرجوع نمایید</Typography>
+              <Typography variant="body1">با خیال راحت میتوانید در صورت عدم رضایت، کالای خریداری شده را تعویض یا مرجوع نمایید</Typography>
             </Grid>
           </Grid>
         </Grid>
