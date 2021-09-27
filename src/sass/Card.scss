@@ -1,5 +1,13 @@
 .card_style {
   transition: all linear 0.2s;
   max-width: 330px;
+  height: 530px;
+}
+.image_card {
+  width: 100%;
   height: 400px;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  border-radius: 10px;
 }

@@ -60,7 +60,6 @@ let theme = createTheme({
       "@media (min-width:600px)": {
         fontSize: "1rem", //16px
       },
-      padding: 10,
     },
     body: {
       color: ["#666"],
@@ -71,6 +70,7 @@ let theme = createTheme({
     },
     subtitle1: {
       color: ["#3E206D"],
+      fontFamily: ["irfontlight"],
       fontSize: "0.5rem", ////8px
       "@media (min-width:600px)": {
         fontSize: "0.625rem", //10px

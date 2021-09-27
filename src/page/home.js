@@ -95,7 +95,7 @@ export default function Home(props) {
             <Button variant="contained" size="large" className="btn_filter">
               جدید ترین ها
             </Button>
-            <Swiper slidesPerView={4}>
+            <Swiper slidesPerView={4} spaceBetween={5}>
               <SwiperSlide>
                 <Card />
               </SwiperSlide>
