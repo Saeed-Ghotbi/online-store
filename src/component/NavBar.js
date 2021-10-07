@@ -85,7 +85,7 @@ function NavBar(props) {
   }
   return (
     <React.Fragment>
-      <Hidden xsDown>
+      <Hidden mdDown>
         <div id="navbar" style={StyleNav}>
           <Container maxWidth="xl">
             <Typography variant="h2" component="div" className="title_navbar">

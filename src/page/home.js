@@ -4,12 +4,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Autoplay, EffectFade } from "swiper";
 import { Button, Grid, Container, Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import Footer from "../component/Footer";
 import Card from "../component/Card";
-import transparent from "../img/transparent.png";
-import women from "../img/women1.png";
 import baner1 from "../img/baner1.jpg";
 import baner2 from "../img/baner2.jpg";
 import logo1 from "../img/logo1.jpg";
@@ -34,24 +33,24 @@ import "swiper/components/pagination/pagination.scss";
 import "swiper/components/effect-fade/effect-fade.scss";
 
 export default function Home(props) {
-  const matches = useMediaQuery("(min-width:768px)");
-
+  const theme = useTheme();
+  const device = useMediaQuery(theme.breakpoints.up("md"));
   SwiperCore.use([Autoplay, Navigation, Pagination, EffectFade]);
 
   return (
     <React.Fragment>
       <Navbar navbarLine={false} />
       <Swiper
-        navigation={matches}
-        pagination={matches}
+        navigation={device}
+        pagination={device}
         autoplay={{
           delay: 5000,
           disableOnInteraction: false,
         }}
         loop={true}
-        slidesPerView={matches ? 1 : 1.1}
-        centeredSlides={matches ? false : true}
-        spaceBetween={matches ? 0 : 10}
+        slidesPerView={device ? 1 : 1.1}
+        centeredSlides={device ? false : true}
+        spaceBetween={device ? 0 : 10}
         effect={"slide"}
       >
         <SwiperSlide>
@@ -71,7 +70,7 @@ export default function Home(props) {
         </SwiperSlide>
       </Swiper>
       <Container maxWidth="xl">
-        <Grid container direction="column" justifyContent="center" spacing={matches ? 5 : 0}>
+        <Grid container direction="column" justifyContent="center" spacing={device ? 5 : 0}>
           <Grid container item>
             <Grid item xs={12} lg={6} align="center">
               <Link to="/shop">
@@ -85,8 +84,8 @@ export default function Home(props) {
             </Grid>
           </Grid>
 
-          <Grid item lg={12} align="center">
-            <Button variant="contained" size="large" className="btn_filter">
+          <Grid item lg={12} xs={12}>
+            {/* <Button variant="contained" size="large" className="btn_filter">
               بیشترین تخفیف ها
             </Button>
             <Button variant="contained" size="large" className="btn_filter">
@@ -94,8 +93,8 @@ export default function Home(props) {
             </Button>
             <Button variant="contained" size="large" className="btn_filter">
               جدید ترین ها
-            </Button>
-            <Swiper slidesPerView={4} spaceBetween={5}>
+            </Button> */}
+            <Swiper slidesPerView={device ? 4.2 : 2.5} spaceBetween={device ? 20 : 10}>
               <SwiperSlide>
                 <Card />
               </SwiperSlide>

@@ -1,13 +1,139 @@
+@import "variable";
+
 .card_style {
   transition: all linear 0.2s;
-  max-width: 330px;
-  height: 530px;
+  background-color: #ffffff;
+
+  width: 100%;
+  min-height: 530px;
 }
 .image_card {
   width: 100%;
-  height: 400px;
+  min-height: 400px;
   margin-right: auto;
   margin-left: auto;
   display: block;
   border-radius: 10px;
+}
+.dv_details_card {
+  width: 100%;
+  height: 40px;
+}
+.favorite_card {
+  transition: all linear 0.2s;
+  position: absolute;
+  top: 3%;
+  right: 10%;
+  width: 50px;
+  height: 50px;
+  background-color: #ffffff;
+  box-shadow: inset 0px 4px 9px 0px #0000001a;
+  border-radius: 50%;
+  line-height: 70px;
+  display: none;
+  text-align: center;
+}
+.percent_card {
+  width: 20%;
+  height: 30px;
+  position: absolute;
+  top: 5%;
+  left: 0.2%;
+  background-color: #e53935;
+  color: #ffffff !important;
+  text-align: center;
+  border-radius: 0px 15px 15px 0px;
+  line-height: 30px !important;
+}
+.price_card {
+  position: absolute;
+  left: 0px;
+  line-height: 40px !important;
+}
+.dv_size_card {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.size_card {
+  width: 25px;
+  height: 25px;
+  border: 1px solid #d6d5d5;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 25px !important;
+  margin-left: 10px !important;
+}
+.subtitle_card {
+  width: 70%;
+  position: absolute;
+  right: 0.2%;
+  text-overflow: ellipsis;
+  line-height: 40px !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.title_card {
+  float: right;
+  line-height: 40px !important;
+}
+.card_style:hover {
+  .favorite_card {
+    transition: all linear 0.2s;
+    display: block !important;
+  }
+}
+.price_delete {
+  float: left;
+  line-height: 40px !important;
+  color: #3e206d;
+}
+@media screen and (max-width: $medium) {
+  .card_style {
+    min-height: 250px;
+  }
+  .image_card {
+    min-height: 175px;
+  }
+  .dv_details_card {
+    height: 25px;
+  }
+  .favorite_card {
+    width: 25px;
+    height: 25px;
+    box-shadow: inset 0px 4px 9px 0px #0000001a;
+    line-height: 33px;
+    display: block;
+    text-align: center;
+    svg {
+      font-size: 16px !important;
+    }
+  }
+  .price_card {
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    line-height: 25px !important;
+    text-align: left;
+    background-color: transparent;
+  }
+  .title_card {
+    line-height: 25px !important;
+  }
+  .price_delete {
+    float: right;
+    line-height: 25px !important;
+  }
+  .subtitle_card {
+    width: 90%;
+    line-height: 25px !important;
+  }
+  .percent_card {
+    width: 25% !important;
+    height: 20px;
+    line-height: 20px !important;
+  }
 }
