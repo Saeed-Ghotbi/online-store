@@ -17,7 +17,7 @@ let theme = createTheme({
     h1: {
       color: ["#3E206D"],
       fontFamily: ["irfontbold"],
-      fontSize: "1.375rem", //22px
+      fontSize: "1.125rem", //22px
       "@media (min-width:600px)": {
         fontSize: "1.625rem", //26px
       },

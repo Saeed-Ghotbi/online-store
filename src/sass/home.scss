@@ -22,7 +22,6 @@
 .dv_filter {
   margin: auto !important;
 }
-
 .btn_filter {
   margin: 10px !important;
   background-color: #3e206d !important;
@@ -38,7 +37,9 @@
 .brand_style {
   margin: 30px;
   max-width: 100%;
-  width: 75px;
+  max-height: 100%;
+  border-radius: 10px;
+  background-color: #ffffff;
 }
 .banner_medium {
   width: 90%;
@@ -49,7 +50,29 @@
   width: 100% !important;
   height: auto !important;
 }
-@media screen and (max-width: $small) {
+.dv_sale_time {
+  width: 50px;
+  height: 50px;
+  color: #ffffff;
+  font-size: 28px;
+  font-family: irfontbold;
+  background-color: #db2e20;
+  border-radius: 10px;
+  margin: 10px;
+  text-align: center;
+  line-height: 50px;
+}
+.dot_sale_time {
+  font-size: 28px;
+  color: #db2e20;
+  font-weight: 700;
+  align-self: center;
+}
+.title_sale_time {
+  align-self: center;
+  color: #db2e20 !important;
+}
+@media screen and (max-width: $medium) {
   .banner_medium {
     width: 90%;
     height: auto;
@@ -57,5 +80,23 @@
   }
   .swiper-container {
     margin-top: 20px;
+  }
+  .dv_sale_time {
+    width: 22px;
+    height: 22px;
+    font-size: 16px;
+    border-radius: 10px;
+    margin: 5px;
+    border-radius: 2px;
+    line-height: 22px;
+  }
+  .dot_sale_time {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .brand_style {
+    height: 50px;
+    margin: 0px;
+    border-radius: 5px;
   }
 }

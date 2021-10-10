@@ -1,10 +1,9 @@
 // import { Height } from "@material-ui/icons";
 import React, { useState, useEffect, useRef } from "react";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import { TextField, Typography, Container, Grid, List, ListItem, Collapse } from "@material-ui/core";
+import { TextField, Typography, Container, Grid, List, ListItem, Collapse, Hidden } from "@material-ui/core";
 import { ShoppingCartOutlined, PersonOutlineOutlined, ExpandMoreSharp } from "@material-ui/icons";
 import ImgNavbar from "../img/LC-Waikiki.jpg";
-import Hidden from "@material-ui/core/Hidden";
 
 import "../sass/navbar.scss";
 import { Link } from "react-router-dom";
