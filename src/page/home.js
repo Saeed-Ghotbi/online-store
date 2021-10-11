@@ -3,6 +3,7 @@ import Navbar from "../component/NavBar";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Autoplay, EffectFade } from "swiper";
 import { Button, Grid, Container, Typography, Hidden } from "@material-ui/core";
+import { Call, ChatBubbleOutline, MailOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -12,17 +13,6 @@ import Card from "../component/Card";
 
 import baner1 from "../img/baner1.jpg";
 import baner2 from "../img/baner2.jpg";
-import logo1 from "../img/brand1.jpg";
-import logo2 from "../img/brand2.jpg";
-import logo3 from "../img/brand3.jpg";
-import logo4 from "../img/brand4.jpg";
-import logo5 from "../img/brand5.jpg";
-import logo6 from "../img/brand6.jpg";
-import logo7 from "../img/brand7.jpg";
-import logo8 from "../img/brand8.jpg";
-import logo9 from "../img/brand9.jpg";
-import logo10 from "../img/brand10.jpg";
-import logo11 from "../img/brand11.jpg";
 import support from "../img/support.svg";
 import originality from "../img/originality.svg";
 import delivery from "../img/delivery.svg";
@@ -42,14 +32,12 @@ export default function Home(props) {
   const theme = useTheme();
   const device = useMediaQuery(theme.breakpoints.up("md"));
   SwiperCore.use([Autoplay, Navigation, Pagination, EffectFade]);
-  // const BrandImg = ["brand1", "brand2", "brand3", "brand4", "brand5", "brand6", "brand7", "brand8", "brand9", "brand10", "brand11"];
-  // const Brand = BrandImg.map((brand, index) => {
-  //   return (
-  //     <SwiperSlide>
-  //       <img src={require(`../img/${brand}.jpg`)} alt={brand} />
-  //     </SwiperSlide>
-  //   );
-  // });
+  const BrandImg = ["brand1", "brand2", "brand3", "brand4", "brand5", "brand6", "brand7", "brand8", "brand9", "brand10", "brand11"];
+  const Brand = BrandImg.map((brand, index) => (
+    <SwiperSlide key={index}>
+      <img src={require(`../img/${brand}.jpg`).default} alt={brand} className="brand_style" />
+    </SwiperSlide>
+  ));
 
   return (
     <>
@@ -163,13 +151,13 @@ export default function Home(props) {
             </Swiper>
           </Grid>
 
-          <Grid container item style={{ backgroundColor: "#F9F9F9" }}>
+          <Grid container item className="background_grey">
             <Grid item xl={12} xs={12} align="center">
               <Typography variant="h3">برترین برند ها</Typography>
             </Grid>
             <Grid item xl={12} xs={12} align="center">
               <Swiper
-                slidesPerView={device ? 7.5 : 3.5}
+                slidesPerView={device ? 8 : 3}
                 spaceBetween={device ? 10 : 5}
                 autoplay={{
                   delay: 3000,
@@ -177,43 +165,7 @@ export default function Home(props) {
                 }}
                 loop={true}
               >
-                {/* {Brand} */}
-                <SwiperSlide>
-                  <img src={logo1} alt="brand" className="brand_style" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={logo2} alt="brand" className="brand_style" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={logo3} alt="brand" className="brand_style" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={logo4} alt="brand" className="brand_style" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={logo5} alt="brand" className="brand_style" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={logo6} alt="brand" className="brand_style" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={logo7} alt="brand" className="brand_style" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={logo8} alt="brand" className="brand_style" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={logo9} alt="brand" className="brand_style" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={logo9} alt="brand" className="brand_style" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={logo10} alt="brand" className="brand_style" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={logo11} alt="brand" className="brand_style" />
-                </SwiperSlide>
+                {Brand}
               </Swiper>
               <Button variant="outlined" size={device ? "large" : "small"} style={{ marginTop: device ? 20 : 10, marginBottom: device ? 20 : 10 }}>
                 مشاهده همه برند ها
@@ -222,7 +174,73 @@ export default function Home(props) {
           </Grid>
 
           <Hidden mdUp>
-            <div></div>
+            <Grid container item className="background_grey" spacing={2}>
+              <Grid item align="center" xs={12}>
+                <Typography variant="h5">میزبان صدای گرمتان هستیم</Typography>
+              </Grid>
+              <Grid item align="center" xs={12}>
+                <Typography variant="h6" className="text_contact_us">
+                  7 روز هفته-24 ساعته
+                </Typography>
+              </Grid>
+              <Grid item xs={12} style={{ display: "flex", alignItems: "center" }}>
+                <div
+                  style={{
+                    width: 32,
+                    height: 32,
+                    backgroundColor: "#ffffff",
+                    borderRadius: "50%",
+                    textAlign: "center",
+                    lineHeight: "50px",
+                    marginLeft: 5,
+                    marginRight: 5,
+                  }}
+                >
+                  <Call />
+                </div>
+                <Typography variant="h6" className="text_contact_us">
+                  021-910002445
+                </Typography>
+              </Grid>
+              <Grid item xs={12} style={{ display: "flex", alignItems: "center" }}>
+                <div
+                  style={{
+                    width: 32,
+                    height: 32,
+                    backgroundColor: "#ffffff",
+                    borderRadius: "50%",
+                    textAlign: "center",
+                    lineHeight: "50px",
+                    marginLeft: 5,
+                    marginRight: 5,
+                  }}
+                >
+                  <ChatBubbleOutline />
+                </div>
+                <Typography variant="h6" className="text_contact_us">
+                  10001677
+                </Typography>
+              </Grid>
+              <Grid item xs={12} style={{ display: "flex", alignItems: "center" }}>
+                <div
+                  style={{
+                    width: 32,
+                    height: 32,
+                    backgroundColor: "#ffffff",
+                    borderRadius: "50%",
+                    textAlign: "center",
+                    lineHeight: "50px",
+                    marginLeft: 5,
+                    marginRight: 5,
+                  }}
+                >
+                  <MailOutline />
+                </div>
+                <Typography variant="h6" className="text_contact_us">
+                  saeedghotbi@outlook.com
+                </Typography>
+              </Grid>
+            </Grid>
           </Hidden>
 
           <Grid container spacing={2}>

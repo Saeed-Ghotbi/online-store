@@ -72,6 +72,13 @@
   align-self: center;
   color: #db2e20 !important;
 }
+.background_grey {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+}
+.text_contact_us {
+  color: #898989 !important;
+}
 @media screen and (max-width: $medium) {
   .banner_medium {
     width: 90%;
