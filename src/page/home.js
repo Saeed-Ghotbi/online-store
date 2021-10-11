@@ -2,8 +2,8 @@ import React from "react";
 import Navbar from "../component/NavBar";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Autoplay, EffectFade } from "swiper";
-import { Button, Grid, Container, Typography, Hidden } from "@material-ui/core";
-import { Call, ChatBubbleOutline, MailOutline } from "@material-ui/icons";
+import { Button, Grid, Container, Typography, Hidden, BottomNavigation, BottomNavigationAction, AppBar } from "@material-ui/core";
+import { Call, ChatBubbleOutline, MailOutline, Home, Search, ShoppingCart, Favorite, AccountCircle } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -28,7 +28,7 @@ import "swiper/components/navigation/navigation.scss";
 import "swiper/components/pagination/pagination.scss";
 import "swiper/components/effect-fade/effect-fade.scss";
 
-export default function Home(props) {
+export default function HomePage(props) {
   const theme = useTheme();
   const device = useMediaQuery(theme.breakpoints.up("md"));
   SwiperCore.use([Autoplay, Navigation, Pagination, EffectFade]);
@@ -72,8 +72,8 @@ export default function Home(props) {
         </SwiperSlide>
       </Swiper>
       <Container maxWidth="xl">
-        <Grid container direction="column" alignItems="center">
-          <Grid container item alignItems="center" spacing={device ? 5 : 2}>
+        <Grid container direction="column" justifyContent="center" alignItems="center" spacing={device ? 10 : 5}>
+          <Grid container item alignItems="center" spacing={device ? 2 : 1}>
             <Grid item xl={6} xs={6} align="right">
               <Typography variant="h1" style={{ color: "#db2e20" }}>
                 شگفت انگیز های روز
@@ -173,6 +173,52 @@ export default function Home(props) {
             </Grid>
           </Grid>
 
+          <Grid container item spacing={2}>
+            <Grid item lg={12} xs={12} align="center">
+              <Typography variant="h3">ویژگی های ما</Typography>
+            </Grid>
+            <Grid item lg={3} xs={3} align="center">
+              <img src={support} alt="logo" className="brand_style" />
+              <Typography variant="h5" style={{ marginBottom: 10 }}>
+                خدمات پس از فروش
+              </Typography>
+              <Hidden mdDown>
+                <Typography variant="body1">
+                  میزبان صدای گرمتان هستیم. هدف تیم پشتیبانی بانی مد تلاش با تمام قوا برای ارائه بهترین خدمات به مشتریان عزیز می باشد.
+                </Typography>
+              </Hidden>
+            </Grid>
+            <Grid item lg={3} xs={3} align="center">
+              <img src={originality} alt="logo" className="brand_style" />
+              <Typography variant="h5" style={{ marginBottom: 10 }}>
+                ضمانت اصالت
+              </Typography>
+              <Hidden mdDown>
+                <Typography variant="body1">تمامی کالاها اورجینال و با ضمانت اصل بودن از نمایندگی معتبر تهیه و ارائه می‌شوند. </Typography>
+              </Hidden>
+            </Grid>
+            <Grid item lg={3} xs={3} align="center">
+              <img src={delivery} alt="logo" className="brand_style" />
+              <Typography variant="h5" style={{ marginBottom: 10 }}>
+                تحویل سریع و آسان
+              </Typography>
+              <Hidden mdDown>
+                <Typography variant="body1">
+                  ارسال رایگان برای خریدهای بالای 300 هزار تومان و در زمان انتخابی مشتری به سریعترین شکل ممکن می‌باشد.
+                </Typography>
+              </Hidden>
+            </Grid>
+            <Grid item lg={3} xs={3} align="center">
+              <img src={warranty} alt="logo" className="brand_style" />
+              <Typography variant="h5" style={{ marginBottom: 10 }}>
+                ضمانت بازگشت کالا
+              </Typography>
+              <Hidden mdDown>
+                <Typography variant="body1">تا 15 روز برای احترام به انتخاب مشتریان کالای خریداری شده برگردانده می‌شود. </Typography>
+              </Hidden>
+            </Grid>
+          </Grid>
+
           <Hidden mdUp>
             <Grid container item className="background_grey" spacing={2}>
               <Grid item align="center" xs={12}>
@@ -243,51 +289,17 @@ export default function Home(props) {
             </Grid>
           </Hidden>
 
-          <Grid container spacing={2}>
-            <Grid item lg={12} xs={12} align="center">
-              <Typography variant="h3">ویژگی های ما</Typography>
-            </Grid>
-            <Grid item lg={3} xs={3} align="center">
-              <img src={support} alt="logo" className="brand_style" />
-              <Typography variant="h5" style={{ marginBottom: 10 }}>
-                خدمات پس از فروش
-              </Typography>
-              <Hidden mdDown>
-                <Typography variant="body1">
-                  میزبان صدای گرمتان هستیم. هدف تیم پشتیبانی بانی مد تلاش با تمام قوا برای ارائه بهترین خدمات به مشتریان عزیز می باشد.
-                </Typography>
-              </Hidden>
-            </Grid>
-            <Grid item lg={3} xs={3} align="center">
-              <img src={originality} alt="logo" className="brand_style" />
-              <Typography variant="h5" style={{ marginBottom: 10 }}>
-                ضمانت اصالت
-              </Typography>
-              <Hidden mdDown>
-                <Typography variant="body1">تمامی کالاها اورجینال و با ضمانت اصل بودن از نمایندگی معتبر تهیه و ارائه می‌شوند. </Typography>
-              </Hidden>
-            </Grid>
-            <Grid item lg={3} xs={3} align="center">
-              <img src={delivery} alt="logo" className="brand_style" />
-              <Typography variant="h5" style={{ marginBottom: 10 }}>
-                تحویل سریع و آسان
-              </Typography>
-              <Hidden mdDown>
-                <Typography variant="body1">
-                  ارسال رایگان برای خریدهای بالای 300 هزار تومان و در زمان انتخابی مشتری به سریعترین شکل ممکن می‌باشد.
-                </Typography>
-              </Hidden>
-            </Grid>
-            <Grid item lg={3} xs={3} align="center">
-              <img src={warranty} alt="logo" className="brand_style" />
-              <Typography variant="h5" style={{ marginBottom: 10 }}>
-                ضمانت بازگشت کالا
-              </Typography>
-              <Hidden mdDown>
-                <Typography variant="body1">تا 15 روز برای احترام به انتخاب مشتریان کالای خریداری شده برگردانده می‌شود. </Typography>
-              </Hidden>
-            </Grid>
-          </Grid>
+          <Hidden mdUp>
+            <AppBar position="fixed" style={{ top: "auto", bottom: 0 }}>
+              <BottomNavigation value={0} showLabels>
+                <BottomNavigationAction label="خانه" icon={<Home />} />
+                <BottomNavigationAction label="جستجو و دسته بندی" icon={<Search />} />
+                <BottomNavigationAction label="سبد خرید" icon={<ShoppingCart />} />
+                <BottomNavigationAction label="علاقه مندی ها" icon={<Favorite />} />
+                <BottomNavigationAction label="پروفایل" icon={<AccountCircle />} />
+              </BottomNavigation>
+            </AppBar>
+          </Hidden>
         </Grid>
       </Container>
       <Hidden mdDown>
