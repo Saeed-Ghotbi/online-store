@@ -1,0 +1,9 @@
+@import "variable";
+@media screen and (max-width: $medium) {
+  .MuiBottomNavigationAction-root {
+    padding: 0px !important;
+  }
+  .MuiToolbar-root {
+    justify-content: space-between !important;
+  }
+}

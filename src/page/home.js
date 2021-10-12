@@ -2,12 +2,13 @@ import React from "react";
 import Navbar from "../component/NavBar";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Autoplay, EffectFade } from "swiper";
-import { Button, Grid, Container, Typography, Hidden, BottomNavigation, BottomNavigationAction, AppBar } from "@material-ui/core";
-import { Call, ChatBubbleOutline, MailOutline, Home, Search, ShoppingCart, Favorite, AccountCircle } from "@material-ui/icons";
+import { Button, Grid, Container, Typography, Hidden } from "@material-ui/core";
+import { Call, ChatBubbleOutline, MailOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
+import Appbar from "../component/Appbar";
 import Footer from "../component/Footer";
 import Card from "../component/Card";
 
@@ -288,23 +289,10 @@ export default function HomePage(props) {
               </Grid>
             </Grid>
           </Hidden>
-
-          <Hidden mdUp>
-            <AppBar position="fixed" style={{ top: "auto", bottom: 0 }}>
-              <BottomNavigation value={0} showLabels>
-                <BottomNavigationAction label="خانه" icon={<Home />} />
-                <BottomNavigationAction label="جستجو و دسته بندی" icon={<Search />} />
-                <BottomNavigationAction label="سبد خرید" icon={<ShoppingCart />} />
-                <BottomNavigationAction label="علاقه مندی ها" icon={<Favorite />} />
-                <BottomNavigationAction label="پروفایل" icon={<AccountCircle />} />
-              </BottomNavigation>
-            </AppBar>
-          </Hidden>
+          <Appbar type="down" value={0} />
         </Grid>
       </Container>
-      <Hidden mdDown>
-        <Footer />
-      </Hidden>
+      <Footer />
     </>
   );
 }

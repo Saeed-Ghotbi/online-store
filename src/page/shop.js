@@ -1,13 +1,29 @@
 import React, { useRef } from "react";
+import { ChevronLeft, ExpandMore, FilterList, Sort, ViewStream, ViewComfy } from "@material-ui/icons";
+import { TreeView, TreeItem, Pagination } from "@material-ui/lab/";
+import { withStyles, useTheme } from "@material-ui/core/styles";
+import {
+  Button,
+  Grid,
+  Container,
+  Checkbox,
+  Link,
+  Slider,
+  Typography,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Hidden,
+  IconButton,
+} from "@material-ui/core";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Appbar from "../component/Appbar";
 import Navbar from "../component/NavBar";
-import "../sass/shop.scss";
-import { TreeView, TreeItem } from "@material-ui/lab/";
-import { ChevronLeft, ExpandMore } from "@material-ui/icons";
-import { withStyles } from "@material-ui/core/styles";
-import { Button, Grid, Container, Checkbox, Link, Slider, Typography, List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import Card from "../component/Card";
-
 import Footer from "../component/Footer";
+
+import "../sass/shop.scss";
 export default function Shop() {
   // const [valueRange, setvalueRange] = useState([20, 37]);
   const SizeArr = ["XL", "XXL", "S", "M", "S", "10", "9", "8", "7", "6", "5", "4", "3"];
@@ -16,6 +32,9 @@ export default function Shop() {
   const refSecondSlider = useRef(null);
 
   const [checked, setChecked] = React.useState([0]);
+
+  const theme = useTheme();
+  const device = useMediaQuery(theme.breakpoints.up("md"));
 
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
@@ -33,8 +52,8 @@ export default function Shop() {
   function gettextValueSlider(event, value) {
     const nodeFirst = refFirstSlider.current;
     const nodeSecond = refSecondSlider.current;
-    nodeFirst.innerHTML = seprator(value[0]);
-    nodeSecond.innerHTML = seprator(value[1]);
+    nodeFirst.value = seprator(value[0]);
+    nodeSecond.value = seprator(value[1]);
   }
 
   function seprator(number) {
@@ -52,28 +71,28 @@ export default function Shop() {
       </span>
     );
   }
-  function treeviewData(props) {
-    const labelId = `checkbox-list-treeview-${props}`;
+  function treeviewData(props, index) {
+    const labelId = `checkbox-list-treeview-${index}`;
 
     return (
-      <ListItem key={props} role={undefined} dense button onClick={handleToggle(props)} style={{ direction: "ltr" }}>
+      <ListItem key={index} role={undefined} dense button onClick={handleToggle(index)} style={{ direction: "ltr" }}>
         <ListItemIcon>
-          <Checkbox edge="start" checked={checked.indexOf(props) !== -1} tabIndex={-1} disableRipple inputProps={{ "aria-labelledby": labelId }} />
+          <Checkbox edge="start" checked={checked.indexOf(index) !== -1} tabIndex={-1} disableRipple inputProps={{ "aria-labelledby": labelId }} />
         </ListItemIcon>
-        <ListItemText id={labelId} primary={`برند چرم مشهد${props + 1}`} />
+        <ListItemText id={labelId} primary={props} />
       </ListItem>
     );
   }
-  const colorRepeat = colorArray.map((color) => {
+  const colorRepeat = colorArray.map((color, index) => {
     return (
-      <Link color="inherit" underline="none" href="#" style={{ width: 50, height: 50, float: "right" }}>
-        <div style={{ backgroundColor: color, width: 20, height: 20, borderRadius: "50%", margin: "auto" }}></div>
+      <Link color="inherit" key={index} underline="none" href="#" style={{ width: 50, height: 50, float: "right" }}>
+        <div style={{ backgroundColor: color }} className="dv_color_product"></div>
       </Link>
     );
   });
   const sizeRepeat = SizeArr.map((size, index) => {
     return (
-      <Link id={index} href="#" style={{ textDecoration: "none", color: "#797878", float: "right", margin: 10 }}>
+      <Link id={index} key={index} href="#" className="link_dv_size">
         <div className="size_dv_style">{size}</div>
       </Link>
     );
@@ -116,149 +135,174 @@ export default function Shop() {
   })(Slider);
 
   return (
-    <React.Fragment>
+    <>
       <Navbar navbarLine={true} />
-      <Container maxWidth="xl" style={{ paddingTop: 70 }}>
-        <Grid container spacing={5}>
-          <Grid item lg={3} style={{ borderLeft: "1px solid #916DD5" }}>
-            <Typography variant="body1" component="div" style={{ marginTop: 5, float: "right" }}>
-              فیلتر های اعمال شده:
-            </Typography>
-            <Button style={{ fontSize: 16, color: "#916DD5", float: "left" }}>حذف فیلتر ها</Button>
-            {/* <div style={{ width: "100%", height: 100, backgroundColor: "red", clear: "both" }}></div> filter case */}
-            <div style={{ width: "100%", height: 1, backgroundColor: "#916DD5", marginTop: 45, clear: "both" }}></div>
-            <Typography variant="h6" style={{ marginTop: 10 }}>
-              دسته بندی ها
-            </Typography>
-            <TreeView defaultCollapseIcon={<ExpandMore />} defaultExpandIcon={<ChevronLeft />}>
-              <TreeItem nodeId="1" label="مردانه">
-                <TreeItem onLabelClick={(event) => clickCheckbox(event)} nodeId="2" label={treeviewData(0)}></TreeItem>
-                <TreeItem nodeId="3" label={treeviewData(1)}></TreeItem>
-                <TreeItem nodeId="4" label={treeviewData(2)}></TreeItem>
-                <TreeItem nodeId="5" label={treeviewData(3)}></TreeItem>
-              </TreeItem>
-            </TreeView>
-            <div style={{ width: "100%", height: 1, backgroundColor: "#916DD5", marginTop: 10 }}></div>
-            <TreeView defaultCollapseIcon={<ExpandMore />} defaultExpandIcon={<ChevronLeft />} style={{ marginTop: 10 }}>
-              <TreeItem nodeId="1" label="زنانه">
-                <TreeItem onLabelClick={(event) => clickCheckbox(event)} nodeId="2" label={treeviewData(4)}></TreeItem>
-                <TreeItem nodeId="3" label={treeviewData(5)}></TreeItem>
-                <TreeItem nodeId="4" label={treeviewData(6)}></TreeItem>
-                <TreeItem nodeId="5" label={treeviewData(7)}></TreeItem>
-              </TreeItem>
-            </TreeView>
-            <div style={{ width: "100%", height: 1, backgroundColor: "#916DD5", marginTop: 10 }}></div>
-            <Typography variant="h6" style={{ marginTop: 10 }}>
-              برند ها
-            </Typography>
-            <List>
-              {[0, 1, 2, 3].map((value) => {
-                const labelId = `checkbox-list-label-${value}`;
+      <Container maxWidth="xl" style={{ paddingTop: device ? 70 : 0 }}>
+        <Appbar type="up" title="انواع سویشرت و هودی مردانه" />
+        <Grid container spacing={device ? 5 : 0}>
+          <Hidden mdDown>
+            <Grid container item direction="column" lg={3} spacing={2}>
+              <Grid item>
+                <Typography variant="h5" style={{ marginTop: 20 }}>
+                  خرید لباس مردانه
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant="h6">فیلتر های اعمال شده:</Typography>
+                <Button style={{ fontSize: 16, color: "#916DD5", float: "left" }}>حذف فیلتر ها</Button>
+              </Grid>
+              <Grid item>
+                <div className="line"></div>
+              </Grid>
+              <Grid item>
+                <Typography variant="h6" className="title_filter">
+                  دسته بندی ها
+                </Typography>
+                <TreeView defaultCollapseIcon={<ExpandMore />} defaultExpandIcon={<ChevronLeft />}>
+                  <TreeItem nodeId="1" label="مردانه">
+                    <TreeItem onLabelClick={(event) => clickCheckbox(event)} nodeId="2" label={treeviewData("کت", 0)}></TreeItem>
+                    <TreeItem nodeId="3" label={treeviewData("سویشرت", 1)}></TreeItem>
+                    <TreeItem nodeId="4" label={treeviewData("پلیور", 2)}></TreeItem>
+                    <TreeItem nodeId="5" label={treeviewData("شلوار", 3)}></TreeItem>
+                  </TreeItem>
+                </TreeView>
+              </Grid>
+              <Grid item>
+                <div className="line"></div>
+              </Grid>
+              <Grid item>
+                <Typography variant="h6" className="title_filter">
+                  برند ها
+                </Typography>
+                <List>
+                  {["پی لس", "جین وست", "پیانو", "مادر"].map((value, index) => {
+                    const labelId = `checkbox-list-label-${index}`;
 
-                return (
-                  <ListItem key={value} role={undefined} dense button onClick={handleToggle(value)} style={{ direction: "ltr" }}>
-                    <ListItemIcon>
-                      <Checkbox
-                        edge="start"
-                        checked={checked.indexOf(value) !== -1}
-                        tabIndex={-1}
-                        disableRipple
-                        inputProps={{ "aria-labelledby": labelId }}
-                      />
-                    </ListItemIcon>
-                    <ListItemText id={labelId} primary={`برند چرم مشهد${value + 1}`} />
-                  </ListItem>
-                );
-              })}
-            </List>
-            {/* <div style={{ width: "100%", height: 40, lineHeight: "40px", fontSize: 16 }}>
-                <span style={{ float: "right" }}>برند چرم مشهد</span>
-                <Checkbox color="primary" size="small" inputProps={{ "aria-label": "checkbox with small size" }} style={{ float: "left" }} />
-              </div>
-              <div style={{ width: "100%", height: 40, lineHeight: "40px", fontSize: 16 }}>
-                <span style={{ float: "right" }}>برند جین وست</span>
-                <Checkbox color="primary" size="small" inputProps={{ "aria-label": "checkbox with small size" }} style={{ float: "left" }} />
-              </div>
-              <div style={{ width: "100%", height: 40, lineHeight: "40px", fontSize: 16 }}>
-                <span style={{ float: "right" }}>برند جوتی جینز</span>
-                <Checkbox color="primary" size="small" inputProps={{ "aria-label": "checkbox with small size" }} style={{ float: "left" }} />
-              </div>
-              <div style={{ width: "100%", height: 40, lineHeight: "40px", fontSize: 16 }}>
-                <span style={{ float: "right" }}>برند آرتا </span>
-                <Checkbox color="primary" size="small" inputProps={{ "aria-label": "checkbox with small size" }} style={{ float: "left" }} />
-              </div> */}
-            <div style={{ width: "100%", height: 1, backgroundColor: "#916DD5", marginTop: 10 }}></div>
-            <Typography variant="h6">سایز ها</Typography>
-            {sizeRepeat}
-            <div style={{ width: "100%", height: 1, backgroundColor: "#916DD5", clear: "right" }}></div>
-            <Typography variant="h6">رنگ ها</Typography>
-            {colorRepeat}
-            <div style={{ width: "100%", height: 1, backgroundColor: "#916DD5", marginTop: 10, clear: "right" }}></div>
-            <Typography variant="h6">قیمت بر اساس تومان</Typography>
-            <AirbnbSlider
-              ThumbComponent={AirbnbThumbComponent}
-              defaultValue={[0, 50000000]}
-              onChange={(event, value) => gettextValueSlider(event, value)}
-              max={50000000}
-            />
-            <div style={{ width: "50%", float: "right" }}>
-              <h5 style={{ float: "right" }}>از</h5>
-              <div ref={refFirstSlider} className="dv_slider_price">
-                0
-              </div>
-            </div>
-            <div style={{ width: "50%", float: "right" }}>
-              <h5 style={{ float: "right" }}>تا</h5>
-              <div ref={refSecondSlider} className="dv_slider_price">
-                50,000,000
-              </div>
-            </div>
-            <Button
-              variant="contained"
-              style={{
-                width: 130,
-                height: 50,
-                backgroundColor: "#3E206D",
-                borderRadius: 15,
-                color: "white",
-                marginRight: "30%",
-                marginTop: 10,
-              }}
-            >
-              اعمال تغییرات
-            </Button>
-          </Grid>
-          <Grid item lg={9}>
-            <table style={{ width: "100%", marginTop: 50 }}>
-              <tbody>
-                <tr>
-                  <td>
-                    <Card />
-                  </td>
-                  <td>
-                    <Card />
-                  </td>
-                  <td>
-                    <Card />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <Card />
-                  </td>
-                  <td>
-                    <Card />
-                  </td>
-                  <td>
-                    <Card />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                    return (
+                      <ListItem key={index} role={undefined} dense button onClick={handleToggle(index)} style={{ direction: "ltr" }}>
+                        <ListItemIcon>
+                          <Checkbox
+                            edge="start"
+                            checked={checked.indexOf(index) !== -1}
+                            tabIndex={-1}
+                            disableRipple
+                            inputProps={{ "aria-labelledby": labelId }}
+                          />
+                        </ListItemIcon>
+                        <ListItemText id={labelId} primary={`برند ${value}`} />
+                      </ListItem>
+                    );
+                  })}
+                </List>
+              </Grid>
+              <Grid item>
+                <div className="line"></div>
+              </Grid>
+              <Grid item>
+                <Typography variant="h6" className="title_filter">
+                  سایز ها
+                </Typography>
+                {sizeRepeat}
+              </Grid>
+              <Grid item>
+                <div className="line"></div>
+              </Grid>
+              <Grid item>
+                <Typography variant="h6" className="title_filter">
+                  رنگ ها
+                </Typography>
+                {colorRepeat}
+              </Grid>
+              <Grid item>
+                <div className="line"></div>
+              </Grid>
+              <Grid item>
+                <Typography variant="h6" className="title_filter">
+                  قیمت بر اساس تومان
+                </Typography>
+                <AirbnbSlider
+                  ThumbComponent={AirbnbThumbComponent}
+                  defaultValue={[0, 50000000]}
+                  onChange={(event, value) => gettextValueSlider(event, value)}
+                  max={50000000}
+                  step={500000}
+                />
+
+                <div style={{ width: "50%", float: "right" }}>
+                  <Typography variant="h6" className="title_range_price">
+                    تا
+                  </Typography>
+                  <input ref={refSecondSlider} type="text" defaultValue="50,000,000" className="dv_slider_price" />
+                </div>
+                <div style={{ width: "50%", float: "right" }}>
+                  <Typography variant="h6" className="title_range_price">
+                    از
+                  </Typography>
+                  <input ref={refFirstSlider} type="text" defaultValue="0" className="dv_slider_price" />
+                </div>
+                <Button
+                  variant="contained"
+                  style={{
+                    width: 130,
+                    height: 50,
+                    backgroundColor: "#3E206D",
+                    borderRadius: 15,
+                    color: "white",
+                    marginRight: "30%",
+                    marginTop: 10,
+                  }}
+                >
+                  اعمال تغییرات
+                </Button>
+              </Grid>
+            </Grid>
+          </Hidden>
+          <Hidden mdUp>
+            <Grid container item xs={10} justifyContent="space-around" alignItems="center">
+              <Grid item>
+                <Button variant="outlined" startIcon={<FilterList />} className="top_btn_shop">
+                  فیلتر کردن
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button variant="outlined" startIcon={<Sort />} className="top_btn_shop">
+                  مرتب سازی
+                </Button>
+              </Grid>
+            </Grid>
+            <Grid container item xs={2} justifyContent="center" alignItems="center">
+              <IconButton aria-label="view" className="top_btn_shop">
+                <ViewStream />
+              </IconButton>
+            </Grid>
+          </Hidden>
+          <Grid
+            container
+            item
+            direction="row"
+            spacing={device ? 3 : 1}
+            justifyContent="flex-start"
+            alignItems="center"
+            lg={9}
+            xs={12}
+            style={{ marginTop: device ? 20 : 0 }}
+          >
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => {
+              return (
+                <Grid key={item} xs={6} item lg={4}>
+                  <Card />
+                </Grid>
+              );
+            })}
           </Grid>
         </Grid>
+
+        <div style={{ float: device ? "left" : "none", marginTop: device ? 0 : 10, marginBottom: device ? 10 : 80 }}>
+          <Pagination color="primary" count={10} shape="rounded" />
+        </div>
+        <Appbar type="down" value={1} />
       </Container>
       <Footer />
-    </React.Fragment>
+    </>
   );
 }
