@@ -27,7 +27,7 @@
   height: 20px;
   border-radius: 50%;
   margin: auto;
-  border: 1px solid #898989;
+  border: 1px solid $grey;
 }
 .link_dv_size {
   text-decoration: none !important;
@@ -46,7 +46,7 @@
 .line {
   width: 100%;
   height: 1px;
-  background-color: #898989;
+  background-color: $grey;
 }
 .title_filter {
   margin-bottom: 10px !important;
@@ -54,9 +54,9 @@
 .MuiPagination-root {
   flex-direction: row-reverse;
 }
-.MuiPaginationItem-page.Mui-selected {
-  // background-color: aqua;
-}
+// .MuiPaginationItem-page.Mui-selected {
+//    background-color: aqua;
+// }
 @media screen and (max-width: $medium) {
   .MuiPagination-ul {
     justify-content: center !important;

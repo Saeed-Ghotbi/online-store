@@ -2,6 +2,7 @@ import React from "react";
 import "./sass/App.scss";
 import Home from "./page/home";
 import Shop from "./page/shop";
+import Filter from "./page/filter";
 import DetailsShop from "./page/details-shop";
 import { create } from "jss";
 import rtl from "jss-rtl";
@@ -93,6 +94,9 @@ function App() {
             </Route>
             <Route path="/details">
               <DetailsShop />
+            </Route>
+            <Route path="/filter">
+              <Filter />
             </Route>
           </Switch>
         </Router>

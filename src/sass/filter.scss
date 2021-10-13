@@ -1,0 +1,8 @@
+@import "variable";
+@media screen and (max-width: $medium) {
+  .line_filter {
+    width: 100%;
+    height: 1px;
+    background-color: $greylite;
+  }
+}

@@ -180,7 +180,7 @@ export default function HomePage(props) {
             </Grid>
             <Grid item lg={3} xs={3} align="center">
               <img src={support} alt="logo" className="brand_style" />
-              <Typography variant="h5" style={{ marginBottom: 10 }}>
+              <Typography variant="h5" className="title_information">
                 خدمات پس از فروش
               </Typography>
               <Hidden mdDown>
@@ -191,7 +191,7 @@ export default function HomePage(props) {
             </Grid>
             <Grid item lg={3} xs={3} align="center">
               <img src={originality} alt="logo" className="brand_style" />
-              <Typography variant="h5" style={{ marginBottom: 10 }}>
+              <Typography variant="h5" className="title_information">
                 ضمانت اصالت
               </Typography>
               <Hidden mdDown>
@@ -200,7 +200,7 @@ export default function HomePage(props) {
             </Grid>
             <Grid item lg={3} xs={3} align="center">
               <img src={delivery} alt="logo" className="brand_style" />
-              <Typography variant="h5" style={{ marginBottom: 10 }}>
+              <Typography variant="h5" className="title_information">
                 تحویل سریع و آسان
               </Typography>
               <Hidden mdDown>
@@ -211,7 +211,7 @@ export default function HomePage(props) {
             </Grid>
             <Grid item lg={3} xs={3} align="center">
               <img src={warranty} alt="logo" className="brand_style" />
-              <Typography variant="h5" style={{ marginBottom: 10 }}>
+              <Typography variant="h5" className="title_information">
                 ضمانت بازگشت کالا
               </Typography>
               <Hidden mdDown>
@@ -221,7 +221,7 @@ export default function HomePage(props) {
           </Grid>
 
           <Hidden mdUp>
-            <Grid container item className="background_grey" spacing={2}>
+            <Grid container item className="background_grey" spacing={2} style={{ marginBottom: 70 }}>
               <Grid item align="center" xs={12}>
                 <Typography variant="h5">میزبان صدای گرمتان هستیم</Typography>
               </Grid>
@@ -231,18 +231,7 @@ export default function HomePage(props) {
                 </Typography>
               </Grid>
               <Grid item xs={12} style={{ display: "flex", alignItems: "center" }}>
-                <div
-                  style={{
-                    width: 32,
-                    height: 32,
-                    backgroundColor: "#ffffff",
-                    borderRadius: "50%",
-                    textAlign: "center",
-                    lineHeight: "50px",
-                    marginLeft: 5,
-                    marginRight: 5,
-                  }}
-                >
+                <div className="circle_background_white">
                   <Call />
                 </div>
                 <Typography variant="h6" className="text_contact_us">
@@ -250,18 +239,7 @@ export default function HomePage(props) {
                 </Typography>
               </Grid>
               <Grid item xs={12} style={{ display: "flex", alignItems: "center" }}>
-                <div
-                  style={{
-                    width: 32,
-                    height: 32,
-                    backgroundColor: "#ffffff",
-                    borderRadius: "50%",
-                    textAlign: "center",
-                    lineHeight: "50px",
-                    marginLeft: 5,
-                    marginRight: 5,
-                  }}
-                >
+                <div className="circle_background_white">
                   <ChatBubbleOutline />
                 </div>
                 <Typography variant="h6" className="text_contact_us">
@@ -269,18 +247,7 @@ export default function HomePage(props) {
                 </Typography>
               </Grid>
               <Grid item xs={12} style={{ display: "flex", alignItems: "center" }}>
-                <div
-                  style={{
-                    width: 32,
-                    height: 32,
-                    backgroundColor: "#ffffff",
-                    borderRadius: "50%",
-                    textAlign: "center",
-                    lineHeight: "50px",
-                    marginLeft: 5,
-                    marginRight: 5,
-                  }}
-                >
+                <div className="circle_background_white">
                   <MailOutline />
                 </div>
                 <Typography variant="h6" className="text_contact_us">

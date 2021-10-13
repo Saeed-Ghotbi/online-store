@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState, useRef } from "react";
 import { ChevronLeft, ExpandMore, FilterList, Sort, ViewStream, ViewComfy } from "@material-ui/icons";
 import { TreeView, TreeItem, Pagination } from "@material-ui/lab/";
 import { withStyles, useTheme } from "@material-ui/core/styles";
@@ -16,29 +16,33 @@ import {
   ListItemText,
   Hidden,
   IconButton,
+  Drawer,
+  FormControlLabel,
+  Radio,
 } from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Appbar from "../component/Appbar";
 import Navbar from "../component/NavBar";
 import Card from "../component/Card";
 import Footer from "../component/Footer";
-
 import "../sass/shop.scss";
 export default function Shop() {
-  // const [valueRange, setvalueRange] = useState([20, 37]);
   const SizeArr = ["XL", "XXL", "S", "M", "S", "10", "9", "8", "7", "6", "5", "4", "3"];
   const colorArray = ["red", "green", "blue", "yellow", "pink", "grey", "orange", "#9400D3", "#00CED1"];
   const refFirstSlider = useRef(null);
   const refSecondSlider = useRef(null);
 
-  const [checked, setChecked] = React.useState([0]);
+  const [categoryChecked, setCategoryChecked] = useState([]);
+  const [brandChecked, setBrandChecked] = useState([]);
+  const [sortChecked, setSortChecked] = useState();
+  const [drawer, setDrawer] = useState({ bottom: false });
 
   const theme = useTheme();
   const device = useMediaQuery(theme.breakpoints.up("md"));
 
-  const handleToggle = (value) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
+  const categoryHandleToggle = (value) => () => {
+    const currentIndex = categoryChecked.indexOf(value);
+    const newChecked = [...categoryChecked];
 
     if (currentIndex === -1) {
       newChecked.push(value);
@@ -46,9 +50,34 @@ export default function Shop() {
       newChecked.splice(currentIndex, 1);
     }
 
-    setChecked(newChecked);
+    setCategoryChecked(newChecked);
   };
 
+  const brandHandleToggle = (value) => () => {
+    const currentIndex = brandChecked.indexOf(value);
+    const newChecked = [...brandChecked];
+
+    if (currentIndex === -1) {
+      newChecked.push(value);
+    } else {
+      newChecked.splice(currentIndex, 1);
+    }
+
+    setBrandChecked(newChecked);
+  };
+  const sortHandleToggle = (value) => () => {
+    // const currentIndex = sortChecked.indexOf(value);
+    // const newChecked = sortChecked;
+    if (value == sortChecked) return;
+    else {
+      setSortChecked(value);
+    }
+    // if (currentIndex === -1) {
+    //   newChecked.push(value);
+    // } else {
+    //   newChecked.splice(currentIndex, 1);
+    // }
+  };
   function gettextValueSlider(event, value) {
     const nodeFirst = refFirstSlider.current;
     const nodeSecond = refSecondSlider.current;
@@ -75,9 +104,15 @@ export default function Shop() {
     const labelId = `checkbox-list-treeview-${index}`;
 
     return (
-      <ListItem key={index} role={undefined} dense button onClick={handleToggle(index)} style={{ direction: "ltr" }}>
+      <ListItem key={index} role={undefined} dense button onClick={categoryHandleToggle(index)} style={{ direction: "ltr" }}>
         <ListItemIcon>
-          <Checkbox edge="start" checked={checked.indexOf(index) !== -1} tabIndex={-1} disableRipple inputProps={{ "aria-labelledby": labelId }} />
+          <Checkbox
+            edge="start"
+            checked={categoryChecked.indexOf(index) !== -1}
+            tabIndex={-1}
+            disableRipple
+            inputProps={{ "aria-labelledby": labelId }}
+          />
         </ListItemIcon>
         <ListItemText id={labelId} primary={props} />
       </ListItem>
@@ -134,6 +169,14 @@ export default function Shop() {
     },
   })(Slider);
 
+  const toggleDrawer = (open) => (event) => {
+    if (event.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
+      return;
+    }
+
+    setDrawer({ bottom: open });
+  };
+
   return (
     <>
       <Navbar navbarLine={true} />
@@ -179,11 +222,11 @@ export default function Shop() {
                     const labelId = `checkbox-list-label-${index}`;
 
                     return (
-                      <ListItem key={index} role={undefined} dense button onClick={handleToggle(index)} style={{ direction: "ltr" }}>
+                      <ListItem key={index} role={undefined} dense button onClick={brandHandleToggle(index)} style={{ direction: "ltr" }}>
                         <ListItemIcon>
                           <Checkbox
                             edge="start"
-                            checked={checked.indexOf(index) !== -1}
+                            checked={brandChecked.indexOf(index) !== -1}
                             tabIndex={-1}
                             disableRipple
                             inputProps={{ "aria-labelledby": labelId }}
@@ -260,12 +303,12 @@ export default function Shop() {
           <Hidden mdUp>
             <Grid container item xs={10} justifyContent="space-around" alignItems="center">
               <Grid item>
-                <Button variant="outlined" startIcon={<FilterList />} className="top_btn_shop">
+                <Button variant="outlined" component={Link} to="/filter" startIcon={<FilterList />} className="top_btn_shop">
                   فیلتر کردن
                 </Button>
               </Grid>
               <Grid item>
-                <Button variant="outlined" startIcon={<Sort />} className="top_btn_shop">
+                <Button variant="outlined" startIcon={<Sort />} onClick={toggleDrawer(true)} className="top_btn_shop">
                   مرتب سازی
                 </Button>
               </Grid>
@@ -296,12 +339,22 @@ export default function Shop() {
             })}
           </Grid>
         </Grid>
-
         <div style={{ float: device ? "left" : "none", marginTop: device ? 0 : 10, marginBottom: device ? 10 : 80 }}>
           <Pagination color="primary" count={10} shape="rounded" />
         </div>
         <Appbar type="down" value={1} />
       </Container>
+      <Drawer anchor="bottom" open={drawer.bottom} onClose={toggleDrawer(false)}>
+        <List>
+          {["کمترین قیمت", "بیشترین قیمت", "جدیدترین ها", "بیشترین تخفیف", "بیشترین فروش"].map((value, index) => {
+            return (
+              <ListItem key={index} role={undefined} dense button onClick={sortHandleToggle(index)}>
+                <FormControlLabel checked={sortChecked === index} value="end" control={<Radio color="primary" />} label={value} />
+              </ListItem>
+            );
+          })}
+        </List>
+      </Drawer>
       <Footer />
     </>
   );
