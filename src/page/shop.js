@@ -21,10 +21,10 @@ import {
   Radio,
 } from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import Appbar from "../component/Appbar";
-import Navbar from "../component/NavBar";
-import Card from "../component/Card";
-import Footer from "../component/Footer";
+import Appbar from "../components/Appbar";
+import Navbar from "../components/NavBar";
+import Card from "../components/Card";
+import Footer from "../components/Footer";
 import "../sass/shop.scss";
 export default function Shop() {
   const SizeArr = ["XL", "XXL", "S", "M", "S", "10", "9", "8", "7", "6", "5", "4", "3"];

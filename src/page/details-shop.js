@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Button, Grid, Container, Link, Typography, Select, FormControl, InputLabel, MenuItem } from "@material-ui/core";
 import { FavoriteBorder, Share, KeyboardArrowDown, KeyboardArrowUp, ShoppingCartOutlined } from "@material-ui/icons";
-import NavBar from "../component/NavBar";
+import NavBar from "../components/NavBar";
 import "../sass/details-shop.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.scss";
-import Card from "../component/Card";
-import Footer from "../component/Footer";
+import Card from "../components/Card";
+import Footer from "../components/Footer";
 import imgcard from "../img/men-home1.jpg";
 import imgprpduct from "../img/هودی-مردانه.png";
 export default function Details(props) {

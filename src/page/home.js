@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../component/NavBar";
+import Navbar from "../components/NavBar";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Autoplay, EffectFade } from "swiper";
 import { Button, Grid, Container, Typography, Hidden } from "@material-ui/core";
@@ -8,9 +8,9 @@ import { Link } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
-import Appbar from "../component/Appbar";
-import Footer from "../component/Footer";
-import Card from "../component/Card";
+import Appbar from "../components/Appbar";
+import Footer from "../components/Footer";
+import Card from "../components/Card";
 
 import baner1 from "../img/baner1.jpg";
 import baner2 from "../img/baner2.jpg";
