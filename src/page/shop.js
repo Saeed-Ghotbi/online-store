@@ -22,49 +22,18 @@ import {
 } from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Appbar from "../components/Appbar";
+import Filter from "../components/Filter";
 import Navbar from "../components/NavBar";
 import Card from "../components/Card";
 import Footer from "../components/Footer";
 import "../sass/shop.scss";
 export default function Shop() {
-  const SizeArr = ["XL", "XXL", "S", "M", "S", "10", "9", "8", "7", "6", "5", "4", "3"];
-  const colorArray = ["red", "green", "blue", "yellow", "pink", "grey", "orange", "#9400D3", "#00CED1"];
-  const refFirstSlider = useRef(null);
-  const refSecondSlider = useRef(null);
-
-  const [categoryChecked, setCategoryChecked] = useState([]);
-  const [brandChecked, setBrandChecked] = useState([]);
   const [sortChecked, setSortChecked] = useState();
-  const [drawer, setDrawer] = useState({ bottom: false });
+  const [drawer, setDrawer] = useState({ bottom: false, left: false });
 
   const theme = useTheme();
   const device = useMediaQuery(theme.breakpoints.up("md"));
 
-  const categoryHandleToggle = (value) => () => {
-    const currentIndex = categoryChecked.indexOf(value);
-    const newChecked = [...categoryChecked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setCategoryChecked(newChecked);
-  };
-
-  const brandHandleToggle = (value) => () => {
-    const currentIndex = brandChecked.indexOf(value);
-    const newChecked = [...brandChecked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setBrandChecked(newChecked);
-  };
   const sortHandleToggle = (value) => () => {
     // const currentIndex = sortChecked.indexOf(value);
     // const newChecked = sortChecked;
@@ -78,103 +47,16 @@ export default function Shop() {
     //   newChecked.splice(currentIndex, 1);
     // }
   };
-  function gettextValueSlider(event, value) {
-    const nodeFirst = refFirstSlider.current;
-    const nodeSecond = refSecondSlider.current;
-    nodeFirst.value = seprator(value[0]);
-    nodeSecond.value = seprator(value[1]);
-  }
 
-  function seprator(number) {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
-  function clickCheckbox(event) {
-    console.log("click");
-  }
-  function AirbnbThumbComponent(props) {
-    return (
-      <span {...props}>
-        <span className="bar" />
-        <span className="bar" />
-        <span className="bar" />
-      </span>
-    );
-  }
-  function treeviewData(props, index) {
-    const labelId = `checkbox-list-treeview-${index}`;
-
-    return (
-      <ListItem key={index} role={undefined} dense button onClick={categoryHandleToggle(index)} style={{ direction: "ltr" }}>
-        <ListItemIcon>
-          <Checkbox
-            edge="start"
-            checked={categoryChecked.indexOf(index) !== -1}
-            tabIndex={-1}
-            disableRipple
-            inputProps={{ "aria-labelledby": labelId }}
-          />
-        </ListItemIcon>
-        <ListItemText id={labelId} primary={props} />
-      </ListItem>
-    );
-  }
-  const colorRepeat = colorArray.map((color, index) => {
-    return (
-      <Link color="inherit" key={index} underline="none" href="#" style={{ width: 50, height: 50, float: "right" }}>
-        <div style={{ backgroundColor: color }} className="dv_color_product"></div>
-      </Link>
-    );
-  });
-  const sizeRepeat = SizeArr.map((size, index) => {
-    return (
-      <Link id={index} key={index} href="#" className="link_dv_size">
-        <div className="size_dv_style">{size}</div>
-      </Link>
-    );
-  });
-  const AirbnbSlider = withStyles({
-    root: {
-      color: "#916DD5",
-      height: 3,
-      padding: "13px 0",
-    },
-    thumb: {
-      height: 27,
-      width: 27,
-      backgroundColor: "#fff",
-      border: "1px solid currentColor",
-      marginTop: -12,
-      marginLeft: -13,
-      boxShadow: "#ebebeb 0 2px 2px",
-      "&:focus, &:hover, &$active": {
-        boxShadow: "#ccc 0 2px 3px 1px",
-      },
-      "& .bar": {
-        // display: inline-block !important;
-        height: 9,
-        width: 1,
-        backgroundColor: "currentColor",
-        marginLeft: 1,
-        marginRight: 1,
-      },
-    },
-    active: {},
-    track: {
-      height: 3,
-    },
-    rail: {
-      color: "#d8d8d8",
-      opacity: 1,
-      height: 3,
-    },
-  })(Slider);
-
-  const toggleDrawer = (open) => (event) => {
+  const toggleDrawer = (open, position) => (event) => {
     if (event.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
       return;
     }
-
-    setDrawer({ bottom: open });
+    if (position === "bottom") {
+      setDrawer({ bottom: open });
+    } else {
+      setDrawer({ left: open });
+    }
   };
 
   return (
@@ -185,130 +67,18 @@ export default function Shop() {
         <Grid container spacing={device ? 5 : 0}>
           <Hidden mdDown>
             <Grid container item direction="column" lg={3} spacing={2}>
-              <Grid item>
-                <Typography variant="h5" style={{ marginTop: 20 }}>
-                  خرید لباس مردانه
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Typography variant="h6">فیلتر های اعمال شده:</Typography>
-                <Button style={{ fontSize: 16, color: "#916DD5", float: "left" }}>حذف فیلتر ها</Button>
-              </Grid>
-              <Grid item>
-                <div className="line"></div>
-              </Grid>
-              <Grid item>
-                <Typography variant="h6" className="title_filter">
-                  دسته بندی ها
-                </Typography>
-                <TreeView defaultCollapseIcon={<ExpandMore />} defaultExpandIcon={<ChevronLeft />}>
-                  <TreeItem nodeId="1" label="مردانه">
-                    <TreeItem onLabelClick={(event) => clickCheckbox(event)} nodeId="2" label={treeviewData("کت", 0)}></TreeItem>
-                    <TreeItem nodeId="3" label={treeviewData("سویشرت", 1)}></TreeItem>
-                    <TreeItem nodeId="4" label={treeviewData("پلیور", 2)}></TreeItem>
-                    <TreeItem nodeId="5" label={treeviewData("شلوار", 3)}></TreeItem>
-                  </TreeItem>
-                </TreeView>
-              </Grid>
-              <Grid item>
-                <div className="line"></div>
-              </Grid>
-              <Grid item>
-                <Typography variant="h6" className="title_filter">
-                  برند ها
-                </Typography>
-                <List>
-                  {["پی لس", "جین وست", "پیانو", "مادر"].map((value, index) => {
-                    const labelId = `checkbox-list-label-${index}`;
-
-                    return (
-                      <ListItem key={index} role={undefined} dense button onClick={brandHandleToggle(index)} style={{ direction: "ltr" }}>
-                        <ListItemIcon>
-                          <Checkbox
-                            edge="start"
-                            checked={brandChecked.indexOf(index) !== -1}
-                            tabIndex={-1}
-                            disableRipple
-                            inputProps={{ "aria-labelledby": labelId }}
-                          />
-                        </ListItemIcon>
-                        <ListItemText id={labelId} primary={`برند ${value}`} />
-                      </ListItem>
-                    );
-                  })}
-                </List>
-              </Grid>
-              <Grid item>
-                <div className="line"></div>
-              </Grid>
-              <Grid item>
-                <Typography variant="h6" className="title_filter">
-                  سایز ها
-                </Typography>
-                {sizeRepeat}
-              </Grid>
-              <Grid item>
-                <div className="line"></div>
-              </Grid>
-              <Grid item>
-                <Typography variant="h6" className="title_filter">
-                  رنگ ها
-                </Typography>
-                {colorRepeat}
-              </Grid>
-              <Grid item>
-                <div className="line"></div>
-              </Grid>
-              <Grid item>
-                <Typography variant="h6" className="title_filter">
-                  قیمت بر اساس تومان
-                </Typography>
-                <AirbnbSlider
-                  ThumbComponent={AirbnbThumbComponent}
-                  defaultValue={[0, 50000000]}
-                  onChange={(event, value) => gettextValueSlider(event, value)}
-                  max={50000000}
-                  step={500000}
-                />
-
-                <div style={{ width: "50%", float: "right" }}>
-                  <Typography variant="h6" className="title_range_price">
-                    تا
-                  </Typography>
-                  <input ref={refSecondSlider} type="text" defaultValue="50,000,000" className="dv_slider_price" />
-                </div>
-                <div style={{ width: "50%", float: "right" }}>
-                  <Typography variant="h6" className="title_range_price">
-                    از
-                  </Typography>
-                  <input ref={refFirstSlider} type="text" defaultValue="0" className="dv_slider_price" />
-                </div>
-                <Button
-                  variant="contained"
-                  style={{
-                    width: 130,
-                    height: 50,
-                    backgroundColor: "#3E206D",
-                    borderRadius: 15,
-                    color: "white",
-                    marginRight: "30%",
-                    marginTop: 10,
-                  }}
-                >
-                  اعمال تغییرات
-                </Button>
-              </Grid>
+              <Filter />
             </Grid>
           </Hidden>
           <Hidden mdUp>
             <Grid container item xs={10} justifyContent="space-around" alignItems="center">
               <Grid item>
-                <Button variant="outlined" component={Link} to="/filter" startIcon={<FilterList />} className="top_btn_shop">
+                <Button variant="outlined" startIcon={<FilterList />} onClick={toggleDrawer(true, "left")} className="top_btn_shop">
                   فیلتر کردن
                 </Button>
               </Grid>
               <Grid item>
-                <Button variant="outlined" startIcon={<Sort />} onClick={toggleDrawer(true)} className="top_btn_shop">
+                <Button variant="outlined" startIcon={<Sort />} onClick={toggleDrawer(true, "bottom")} className="top_btn_shop">
                   مرتب سازی
                 </Button>
               </Grid>
@@ -344,7 +114,7 @@ export default function Shop() {
         </div>
         <Appbar type="down" value={1} />
       </Container>
-      <Drawer anchor="bottom" open={drawer.bottom} onClose={toggleDrawer(false)}>
+      <Drawer anchor="bottom" open={drawer.bottom} onClose={toggleDrawer(false, "bottom")}>
         <List>
           {["کمترین قیمت", "بیشترین قیمت", "جدیدترین ها", "بیشترین تخفیف", "بیشترین فروش"].map((value, index) => {
             return (
@@ -354,6 +124,11 @@ export default function Shop() {
             );
           })}
         </List>
+      </Drawer>
+      <Drawer anchor="left" open={drawer.left} onClose={toggleDrawer(false, "left")}>
+        <Grid container item direction="column" xs={12}>
+          <Filter />
+        </Grid>
       </Drawer>
       <Footer />
     </>

@@ -1,4 +1,72 @@
 @import "variable";
+.size_dv_style {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #797878;
+  line-height: 40px;
+  text-align: center;
+  font-size: 18px;
+}
+.input_slider_price {
+  width: 50%;
+  height: 40px;
+  // float: right;
+  border: 1px solid #5c5b5b;
+  border-radius: 10px;
+  background-color: #e7e7e7;
+  margin: 10px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 16px;
+  color: #3e206d;
+}
+.dv_color_product {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: auto;
+  border: 1px solid $grey;
+}
+.link_dv_size {
+  text-decoration: none !important;
+  color: #797878 !important;
+  float: right;
+  margin: 10px !important;
+}
+.title_range_price {
+  // float: right !important;
+  line-height: 70px !important;
+}
+.top_btn_shop {
+  margin-top: 70px !important;
+  margin-bottom: 20px !important;
+}
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: $grey;
+}
+.title_filter {
+  margin: 10px !important;
+}
+.dv_slider_price {
+  width: 50%;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn_set_filter {
+  width: 130px;
+  height: 50px;
+  background-color: #3e206d !important;
+  border-radius: 15px !important;
+  color: white !important;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
 @media screen and (max-width: $medium) {
   .line_filter {
     width: 100%;
@@ -6,5 +74,9 @@
     background-color: $greylite;
     margin-top: 10px;
     margin-bottom: 10px;
+  }
+  .btn_set_filter {
+    width: 120px;
+    height: 40px;
   }
 }
