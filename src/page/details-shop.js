@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Button, Grid, Container, Link, Typography, Select, FormControl, InputLabel, MenuItem } from "@material-ui/core";
+import { Button, Grid, Container, Link, Typography, Select, FormControl, InputLabel, MenuItem, Hidden, useMediaQuery } from "@material-ui/core";
 import { FavoriteBorder, Share, KeyboardArrowDown, KeyboardArrowUp, ShoppingCartOutlined } from "@material-ui/icons";
+import { useTheme } from "@material-ui/core/styles";
 import NavBar from "../components/NavBar";
+import Appbar from "../components/Appbar";
 import "../sass/details-shop.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.scss";
@@ -18,14 +20,56 @@ export default function Details(props) {
     // const name = event.target.name;
     // setName({ [name]: event.target.value });
   }
+  const colorArray = ["red", "green", "blue", "yellow", "pink", "grey", "orange", "#9400D3", "#00CED1"];
+  const colorRepeat = colorArray.map((color, index) => {
+    return (
+      <Link color="inherit" key={index} underline="none" href="#" style={{ width: 50, height: 50, float: "right" }}>
+        <div style={{ backgroundColor: color }} className="dv_color_product"></div>
+      </Link>
+    );
+  });
+  const theme = useTheme();
+  const device = useMediaQuery(theme.breakpoints.up("md"));
 
   return (
     <React.Fragment>
       <NavBar navbarLine={true} />
       <Container maxWidth="xl" style={{ paddingTop: 70 }}>
         <Grid container spacing={1}>
-          <Grid item lg={6} sm={12}>
-            <div style={{ width: "80%", float: "left" }}>
+          <Grid container item lg={6} sm={12}>
+            <Hidden smDown>
+              <Grid item lg={2} style={{ height: 450 }}>
+                <KeyboardArrowUp className="arrow_Perview" style={{ marginTop: 5 }} />
+                <Swiper slidesPerView={4} direction="vertical" style={{ width: "100%", height: "100%", paddingTop: 5 }}>
+                  <SwiperSlide>
+                    <img src={imgcard} alt="" className="image_Perview" />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img src={imgcard} alt="" className="image_Perview" />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img src={imgcard} alt="" className="image_Perview" />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img src={imgcard} alt="" className="image_Perview" />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img src={imgcard} alt="" className="image_Perview" />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img src={imgcard} alt="" className="image_Perview" />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img src={imgcard} alt="" className="image_Perview" />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img src={imgcard} alt="" className="image_Perview" />
+                  </SwiperSlide>
+                </Swiper>
+                <KeyboardArrowDown className="arrow_Perview" style={{ marginBottom: 5 }} />
+              </Grid>
+            </Hidden>
+            <Grid item lg={10}>
               <img
                 src={imgprpduct}
                 alt=""
@@ -41,90 +85,42 @@ export default function Details(props) {
                   marginRight: "auto",
                 }}
               />
-            </div>
-            <div style={{ width: "20%", float: "right", height: 480 }}>
-              <KeyboardArrowUp className="arrow_Perview" style={{ marginTop: 5 }} />
-              <Swiper slidesPerView={4} direction="vertical" style={{ width: "100%", height: "100%", paddingTop: 5 }}>
-                <SwiperSlide>
-                  <img src={imgcard} alt="" className="image_Perview" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={imgcard} alt="" className="image_Perview" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={imgcard} alt="" className="image_Perview" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={imgcard} alt="" className="image_Perview" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={imgcard} alt="" className="image_Perview" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={imgcard} alt="" className="image_Perview" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={imgcard} alt="" className="image_Perview" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={imgcard} alt="" className="image_Perview" />
-                </SwiperSlide>
-              </Swiper>
-              <KeyboardArrowDown className="arrow_Perview" style={{ marginBottom: 5 }} />
-            </div>
+            </Grid>
           </Grid>
           <Grid item lg={6} sm={12}>
-            <div style={{ float: "right", marginTop: 20 }}>
-              <Typography variant="h5" component="div">
-                JootiJeans by Jeanswest
-              </Typography>
-              <Typography variant="body2" component="div">
-                هودی مردانه جوتی جینز JootiJeans کد 94551702
-              </Typography>
+            <div style={{ display: "flex", justifyContent: "space-between", marginTop: 20 }}>
+              <div>
+                <Typography variant="h2" component="div">
+                  JootiJeans by Jeanswest
+                </Typography>
+                <Typography variant="h6" component="div">
+                  هودی مردانه جوتی جینز JootiJeans کد 94551702
+                </Typography>
+              </div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 10, alignItems: "center", justifyContent: "end" }}>
+                <Link color="inherit" underline="none" href="#">
+                  <div className="btn_share_favorite">
+                    <FavoriteBorder />
+                  </div>
+                </Link>
+                <Link color="inherit" underline="none" href="#">
+                  <div className="btn_share_favorite">
+                    <Share />
+                  </div>
+                </Link>
+              </div>
             </div>
-            <div style={{ float: "left", marginTop: 10 }}>
-              <Link color="inherit" underline="none" href="#" style={{ float: "left", margin: 10 }}>
-                <div className="btn_share_favorite">
-                  <FavoriteBorder />
-                </div>
-              </Link>
-              <Link color="inherit" underline="none" href="#" style={{ float: "left", margin: 10 }}>
-                <div className="btn_share_favorite">
-                  <Share />
-                </div>
-              </Link>
-            </div>
+
             <div style={{ height: 40, borderBottom: "1px solid #916DD5", clear: "both", float: "right", marginTop: 50 }}>
               <Typography variant="h5" component="div">
                 999,000 تومان
               </Typography>
             </div>
-            <Typography variant="h6" component="div" style={{ clear: "right", float: "right", marginTop: 30 }}>
+            <Typography variant="h6" component="div" style={{ clear: "right", float: "right", marginTop: 30, marginBottom: 20 }}>
               رنگ:
             </Typography>
-            <div style={{ clear: "both", marginTop: 10 }}>
-              <Swiper spaceBetween={10} slidesPerView={6} freeMode={true}>
-                <SwiperSlide>
-                  <img src={imgcard} alt="" className="image_Perview" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={imgcard} alt="" className="image_Perview" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={imgcard} alt="" className="image_Perview" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={imgcard} alt="" className="image_Perview" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={imgcard} alt="" className="image_Perview" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src={imgcard} alt="" className="image_Perview" />
-                </SwiperSlide>
-              </Swiper>
-            </div>
-            <div style={{ marginTop: 30 }}>
+            <div style={{ clear: "both", display: "flex", alignItems: "center", flexWrap: "wrap" }}>{colorRepeat}</div>
+            <div>
               <FormControl variant="outlined" style={{ width: 190 }}>
                 <InputLabel htmlFor="outlined-age">انتخاب سایز</InputLabel>
                 <Select
@@ -152,7 +148,7 @@ export default function Details(props) {
           </Grid>
         </Grid>
         <div style={{ marginTop: 50 }}>
-          <Typography variant="h5" component="div">
+          <Typography variant="h2" component="div">
             مشخصات محصول
           </Typography>
           <div style={{ width: "100%", height: "100%", backgroundColor: "#FAF5FF", borderRadius: 10 }}>
@@ -175,30 +171,33 @@ export default function Details(props) {
           </div>
         </div>
         <div style={{ marginTop: 30 }}>
-          <Typography variant="h5" component="div">
+          <Typography variant="h2" component="div">
             محصولات مشابه
           </Typography>
-          <Swiper spaceBetween={20} slidesPerView={4} style={{ marginTop: 10 }}>
-            <SwiperSlide>
-              <Card />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Card />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Card />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Card />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Card />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Card />
-            </SwiperSlide>
-          </Swiper>
+          <Grid item xl={12} xs={12} align="center">
+            <Swiper slidesPerView={device ? 4.2 : 2.5} spaceBetween={device ? 20 : 10}>
+              <SwiperSlide>
+                <Card />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Card />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Card />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Card />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Card />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Card />
+              </SwiperSlide>
+            </Swiper>
+          </Grid>
         </div>
+        <Appbar type="down" value={0} />
       </Container>
       <Footer />
     </React.Fragment>

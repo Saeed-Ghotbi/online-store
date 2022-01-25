@@ -2,11 +2,11 @@ import React from "react";
 import Navbar from "../components/NavBar";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Autoplay, EffectFade } from "swiper";
-import { Button, Grid, Container, Typography, Hidden } from "@material-ui/core";
+import { Button, Grid, Container, Typography, Hidden, useMediaQuery } from "@material-ui/core";
 import { Call, ChatBubbleOutline, MailOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+// import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import Appbar from "../components/Appbar";
 import Footer from "../components/Footer";
